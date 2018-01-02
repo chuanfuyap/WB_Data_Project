@@ -1,2 +1,4 @@
-# WorldBankEDA
-Quick and simple exploratory data analysis with one of the data source from world bank, grouping them by countries and using only the mean of annual data.
+# World Bank Data Science Project
+Explores the feature rich dataset collected by World Bank.
+
+First steps would be to collect, clean and compile the dataset.
