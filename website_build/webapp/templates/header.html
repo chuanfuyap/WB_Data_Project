@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>A Better Country</title>
+        <meta name="viewport" content="width=device-width, 
+        initial-scale=1">
+        <link href="{{ url_for('static',
+        filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel = "shortcut icon" href="{{ url_for('static',
+        filename='images/globe.ico') }}">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.13.min.css"
+        rel="stylesheet" type="text/css">
+        
+     <style>
+    html {
+    background: url({{ url_for('static', filename='images/background.jpg') }})no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    
+    .content {
+        max-width: 960px;
+        margin: auto;
+    }
+    .wrapper {
+        margin: 0 auto;
+    }
+    .bk-plot-wrapper table {
+        margin: 0 auto;
+    }
+    </style>
+</head>
+
+<header>
+    <nav class="navbar navbar-default">
+    <div class = "navbar-header" >
+        <a class="navbar-brand" href="/">
+            <img style="max-width: 120px; margin-top: -7px;" src=" {{ url_for('static',
+                filename='images/mainlogo.png') }}">
+        </a>
+    </div>
+    
+    <div class="container-fluid">
+        {% set navigation_bar = [
+            ('/graph/', 'graph', 'Graphs'),
+            ('/map/', 'map', 'Maps'),
+            ('/model/', 'model', 'Models')
+        ] -%}
+        
+        <ul  id="navigation" class="nav navbar-nav">
+        {% for href, id, caption in navigation_bar %}
+          <li{% if id == active_page %} class="active"{% endif
+          %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
+        {% endfor %}
+         </ul>
+
+
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="/about/">About</a></li>
+    <!--<li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </li>-->
+</ul>
+
+</div>
+</nav>
+</header>
+
+<body>
+
+<div class="border-row" style="width:100%; margin-bottom: 15px;"></div>
+
+    <div class="container-fluid" align="center" style="min-height:100%; max-width: 80%">
+    
+        {% block body %}
+        {% endblock %}
+        
+        
+    </div>
+    
+ <script type=text/javascript src="{{
+  url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+   <script type="text/javascript">
+    var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    
+    <script type="text/javascript" src="{{ url_for('static',
+        filename='js/bootstrap.min.js') }}"></script>
+ <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.13.min.js"></script>      
+</body>
+<br><br><br>
+
+</html>
+

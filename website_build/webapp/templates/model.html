@@ -1,0 +1,95 @@
+{% extends "header.html" %}
+{% set active_page = "model" %}
+
+
+{% block body %}
+<style>
+    li {
+        text-align: left;
+    margin: 0; padding: 0;
+}
+    </style>
+    <script type=text/javascript src="{{
+  url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+<script type=text/javascript src="{{
+    url_for('static', filename='js/run_model.js') }}"></script>
+    
+<div>
+ <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#economy" aria-controls="economy" role="tab" data-toggle="tab">Economy</a></li>
+    <li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab">Finance</a></li>
+    <li role="presentation"><a href="#development" aria-controls="development" role="tab" data-toggle="tab">Development</a></li>
+    <li role="presentation"><a href="#poverty" aria-controls="poverty" role="tab" data-toggle="tab">Poverty</a></li>
+  </ul>
+    
+   <div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="economy">
+      <br>
+      <div>
+      <p><font size="5">Predict annual growth of GDP in the country with the following indicators.</font></p>
+      <p align='left'>Fill up the values and make a prediction with the model</p>
+    <ul>
+	{% for feat in econ_feat %}
+        <li>{{feat}}<input type='text' id="econ_{{loop.index}}"></li>
+	{% endfor %}
+    </ul>
+      <button style="float: left" class="button" id="model_economy">Predict GDP Growth</button>
+      <p align='left'>Annual Growth of GDP would be <span id='econ_output'>???</span> </p>
+      </div>
+      
+  </div>
+  
+  
+  <div role="tabpanel" class="tab-pane fade" id="finance">
+  <br>
+  <div>
+      <p><font size="5">Predict amount of foreign direct investment made towards the country.</font></p>
+      <p align='left'>Fill up the values and make a prediction with the model</p>
+    <ul>
+	{% for feat in fin_feat %}
+        <li>{{feat}}<input type='text' id="fin_{{loop.index}}"></li>
+	{% endfor %}
+    </ul>
+      <button style="float: left;" class="button" id="model_finance">Predict Foreign Investment Amount</button>
+      <p align='left'>Amount of foreign direct investment towards the country would be <span id='fin_output'>???</span> </p> 
+       </div> 
+    
+  </div>
+       
+       
+  <div role="tabpanel" class="tab-pane fade" id="development">
+    <br>
+    <div>
+      <p><font size="5">Predict the percentage of arable land in the country.</font></p>
+      <p align='left'>Fill up the values and make a prediction with the model</p>
+    <ul>
+	{% for feat in dev_feat %}
+        <li>{{feat}}<input type='text' id="dev_{{loop.index}}"></li>
+	{% endfor %}
+    </ul>
+      <button style="float: left;" class="button" id="model_development">Predict arable land percentage</button>
+      <p align='left'>Percentage of arable land would be <span id='dev_output'>???</span> </p>   
+    </div>
+  </div>
+       
+       
+  <div role="tabpanel" class="tab-pane fade" id="poverty">
+  <br>
+  <div>
+      <p><font size="5">Predict poverty headcount ratio at $1.90 a day as a percentage of the population.</font></p>
+      <p align='left'>Fill up the values and make a prediction with the model</p>
+    <ul>
+	{% for feat in pov_feat %}
+        <li>{{feat}}<input type='text' id="pov_{{loop.index}}"></li>
+	{% endfor %}
+    </ul>
+      <button style="float: left;" class="button" id="model_poverty">Predict poverty headcount ratio</button>
+      <p align='left'>Poverty headcount ratio would be<span id='pov_output'>???</span> </p> 
+    </div>
+  </div>
+  
+</div>
+  
+</div>
+</div>
+{% endblock %}

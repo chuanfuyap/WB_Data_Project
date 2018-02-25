@@ -1,0 +1,69 @@
+{% extends "header.html" %}
+
+{% block body %}
+<style>
+    li {
+        text-align: left;
+    margin: 0; padding: 0;
+}
+    h1 {
+    text-align: left;
+    }
+    h3 {
+    text-align: left;
+    }
+
+    p {
+    text-align: left;
+    }
+</style>
+<h1>What is Towards a Better Country?</h1>
+<h3>Aims</h3>
+<p>This is a project aimed to inform discussion when it comes to the development of the country. </p>
+<p>It does this in two methods:</p>
+<ul><li>Interactive visualisation of data to inform users on facts.</li>
+    <li>Forecast models to see if policy introduced can help deliver the change that was promised</li>
+</ul>
+<br>
+<h3>Motivation</h3>
+<p>Majority of the people enjoy a good political discussion, this is because at the end of the day everyone wants the best for their country, be it left wing, right wing.
+So instead of just a heated yelling contest, I hope to steer discussion towards facts and focus on things that are really wrong.</p>
+
+
+<br>
+<h3>Source of Data</h3>
+<p>The data used here are all downloaded from <a href="https://data.worldbank.org">The World Bank</a></p>
+
+<br>
+<h3>Visualisations</h3>
+<p>For the visualisations, theres two forms, graphs (bar, line) and map. For the graphs there's options to view:</p>
+<ul><li>Top 5 Countries for an indicator</li>
+    <li>Countries in a region, though only 10 would be shown to fit the graph.</li>
+    <li>Individual Countries compared with World Average and its Region Average</li>
+</ul>
+<p>To be added...</p>
+<ul><li>Plotting correlated indicators for countries in graph section.</li>
+    <li>Map visualisation.</li>
+    <li>Summary of indicators for countries.</li>
+</ul>
+
+
+<br>
+<h3>Forecast Models</h3>
+<p>4 Models were built for different topics predicting different indicators:</p>
+<ul><li>Economy, predicting annual growth of GDP in the country.</li>
+    <li>Development, predicting percentage of arable land in country land.</li>
+    <li>Finance, predicting amount foreign direct invesment made towards the country.</li>
+    <li>Poverty, predicting poverty headcount ratio at $1.90 a day as a percentage of the population.</li></ul>
+<p>The models were all built using scikit-learn's RandomForestRegressor with hyperparameter tuning.</p>
+<p>There are no models built for the remaining topics, Health, Education and Environment as there were too many missing data to build an informative model.</p>
+<p>While the models were trained with more than a 100 hundred features, for the use on the website only 10 features were used.</p>
+<p>These features were choesen by looking into the model's feature importances attribute in the full model, and the 10 most important ones were chosen. While some information is lost, its accuracy drop was not significant.</p>
+<br>
+<h3>About the Creator</h3>
+<p>I am Chuan Fu Yap, a PhD student in Bioinformatics in the University of Manchester, looking to transition to data science in the industry. I can be reached at:</p>
+<ul><li>Twitter: @chuanfuyap</li>
+    <li>e-mail: yapchuanfu@gmail.com</li></ul>
+
+
+{% endblock %}

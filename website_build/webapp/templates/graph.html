@@ -1,0 +1,293 @@
+{% extends "header.html" %}
+{% set active_page = "graph" %}
+
+{% block body %}
+<style>
+.button {
+}
+h1 {
+    text-align: center;
+    }
+
+    p {
+    text-align: center;
+    }
+</style>
+ <script type=text/javascript src="{{
+  url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+<script type=text/javascript src="{{
+    url_for('static', filename='js/run_graph.js') }}"></script>
+    
+<var id="econ_script">{{econ_script|safe}}</var>
+<var id="health_script">{{health_script|safe}}</var>
+<var id="edu_script">{{edu_script|safe}}</var>
+<var id="env_script">{{env_script|safe}}</var>
+<var id="fin_script">{{fin_script|safe}}</var>
+<var id="dev_script">{{dev_script|safe}}</var>
+<var id="pov_script">{{pov_script|safe}}</var>
+
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#economy" aria-controls="economy" role="tab" data-toggle="tab">Economy</a></li>
+    <li role="presentation"><a href="#health" aria-controls="health" role="tab" data-toggle="tab">Health</a></li>
+    <li role="presentation"><a href="#education" aria-controls="education" role="tab" data-toggle="tab">Education</a></li>
+    <li role="presentation"><a href="#environment" aria-controls="environment" role="tab" data-toggle="tab">Environment</a></li>
+    <li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab">Finance</a></li>
+    <li role="presentation"><a href="#development" aria-controls="development" role="tab" data-toggle="tab">Development</a></li>
+    <li role="presentation"><a href="#poverty" aria-controls="poverty" role="tab" data-toggle="tab">Poverty</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  
+  <div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="economy">
+
+  <br>
+    <select name="econ_indicator" id="econoplot">
+        <option>Select an Indicator</option>
+	{% for indicator in indicator_dict['Economy'] %}
+		<option value="{{ indicator }}">{{ indicator }}</option> 
+	{% endfor %}
+    </select>
+  
+    <button class="button" id="economy_plot">View Top 5</button>
+    <br>
+    <select name="econ_region" id="econ_region">
+        <option>Select a Region</option>
+	{% for region in region_list %}
+		<option value="{{ region }}">{{ region }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="economy_regionplot">View Region</button>
+    <br>
+    <select name="econ_country" id="econ_country">
+        <option>Select a Country</option>
+	{% for country in country_list %}
+		<option value="{{ country }}">{{ country }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="economy_countryplot">View Country</button>
+    <br>
+    <br>
+        <div  class='wrapper'
+         id="econ_graph">{{econ_graph|safe}}
+        </div>
+  
+  </div>
+      
+      
+  <div role="tabpanel" class="tab-pane fade" id="health">
+     <br>
+    <select name="health_indicator" id="healthplot">
+        <option>Select an Indicator</option>
+	{% for indicator in indicator_dict['Health'] %}
+		<option value="{{ indicator }}">{{ indicator }}</option> 
+	{% endfor %}
+    </select>
+      <button id="health_plot">View Top 5</button>
+      <br>
+    <select name="health_region" id="health_region">
+        <option>Select a Region</option>
+	{% for region in region_list %}
+		<option value="{{ region }}">{{ region }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="health_regionplot">View Region</button>
+    <br>
+    <select name="health_country" id="health_country">
+        <option>Select a Country</option>
+	{% for country in country_list %}
+		<option value="{{ country }}">{{ country }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="health_countryplot">View Country</button>
+      <br>
+    <br>
+        <div  class='wrapper'
+         id="health_graph">{{health_graph|safe}}
+        </div>
+  </div>      
+      
+      
+  <div role="tabpanel" class="tab-pane fade" id="education">
+      <br>
+      <select name="edu_indicator" id="eduplot">
+        <option>Select an Indicator</option>
+	{% for indicator in indicator_dict['Education'] %}
+		<option value="{{ indicator }}">{{ indicator }}</option> 
+	{% endfor %}
+      </select>
+            <button id="education_plot">View Top 5</button>
+            <br>
+    <select name="edu_region" id="edu_region">
+        <option>Select a Region</option>
+	{% for region in region_list %}
+		<option value="{{ region }}">{{ region }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="education_regionplot">View Region</button>
+    <br>
+    <select name="edu_country" id="edu_country">
+        <option>Select a Country</option>
+	{% for country in country_list %}
+		<option value="{{ country }}">{{ country }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="education_countryplot">View Country</button>
+            <br>
+    <br>
+        <div  class='wrapper'
+         id="edu_graph">{{edu_graph|safe}}
+        </div>
+
+  </div>
+      
+      
+  <div role="tabpanel" class="tab-pane fade" id="environment">
+  <br>
+      <select name="env_indicator" id="envplot">
+        <option>Select an Indicator</option>
+	{% for indicator in indicator_dict['Environment'] %}
+		<option value="{{ indicator }}">{{ indicator }}</option> 
+	{% endfor %}
+      </select>
+            <button id="environment_plot">View Top 5</button>
+            
+            <br>
+    <select name="env_region" id="env_region">
+        <option>Select a Region</option>
+	{% for region in region_list %}
+		<option value="{{ region }}">{{ region }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="environment_regionplot">View Region</button>
+    <br>
+    <select name="env_country" id="env_country">
+        <option>Select a Country</option>
+	{% for country in country_list %}
+		<option value="{{ country }}">{{ country }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="environment_countryplot">View Country</button>
+            <br>
+    <br>
+    
+        <div  class='wrapper'
+         id="env_graph">{{env_graph|safe}}
+        </div>
+  
+  
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="finance">
+  <br>
+      <select name="fin_indicator" id="finplot">
+        <option>Select an Indicator</option>
+	{% for indicator in indicator_dict['Finance'] %}
+		<option value="{{ indicator }}">{{ indicator }}</option> 
+	{% endfor %}
+      </select>
+            <button id="finance_plot">View Top 5</button>
+            <br>
+    <select name="fin_region" id="fin_region">
+        <option>Select a Region</option>
+	{% for region in region_list %}
+		<option value="{{ region }}">{{ region }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="finance_regionplot">View Region</button>
+    <br>
+    <select name="fin_country" id="fin_country">
+        <option>Select a Country</option>
+	{% for country in country_list %}
+		<option value="{{ country }}">{{ country }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="finance_countryplot">View Country</button>
+            <br>
+    <br>
+    
+        <div  class='wrapper'
+         id="fin_graph">{{fin_graph|safe}}
+        </div>
+        
+    
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="development">
+      <br>
+      <select name="dev_indicator" id="devplot">
+        <option>Select an Indicator</option>
+	{% for indicator in indicator_dict['Development'] %}
+		<option value="{{ indicator }}">{{ indicator }}</option> 
+	{% endfor %}
+      </select>
+            <button id="development_plot">View Top 5</button>
+            
+            <br>
+    <select name="dev_region" id="dev_region">
+        <option>Select a Region</option>
+	{% for region in region_list %}
+		<option value="{{ region }}">{{ region }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="development_regionplot">View Region</button>
+    <br>
+    <select name="dev_country" id="dev_country">
+        <option>Select a Country</option>
+	{% for country in country_list %}
+		<option value="{{ country }}">{{ country }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="development_countryplot">View Country</button>
+            <br>
+    <br>
+    
+        <div  class='wrapper'
+         id="dev_graph">{{dev_graph|safe}}
+        </div>
+        
+    
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="poverty">
+  <br>
+      <select name="pov_indicator" id="povplot">
+        <option>Select an Indicator</option>
+	{% for indicator in indicator_dict['Poverty'] %}
+		<option value="{{ indicator }}">{{ indicator }}</option> 
+	{% endfor %}
+      </select>
+            <button id="poverty_plot">View Top 5</button>
+            
+            <br>
+    <select name="pov_region" id="pov_region">
+        <option>Select a Region</option>
+	{% for region in region_list %}
+		<option value="{{ region }}">{{ region }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="poverty_regionplot">View Region</button>
+    <br>
+    <select name="pov_country" id="pov_country">
+        <option>Select a Country</option>
+	{% for country in country_list %}
+		<option value="{{ country }}">{{ country }}</option> 
+	{% endfor %}
+    </select>
+    <button class="button" id="poverty_countryplot">View Country</button>
+            <br>
+    <br>
+    
+        <div  class='wrapper'
+         id="pov_graph">{{pov_graph|safe}}
+        </div>
+        
+    
+  </div>
+  
+</div>
+
+</div>
+
+{% endblock %}

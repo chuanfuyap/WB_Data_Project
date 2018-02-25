@@ -1,0 +1,38 @@
+{% extends "header.html" %}
+
+{% block body %}
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#economy" aria-controls="economy" role="tab" data-toggle="tab">Economy</a></li>
+    <li role="presentation"><a href="#health" aria-controls="health" role="tab" data-toggle="tab">Health</a></li>
+    <li role="presentation"><a href="#education" aria-controls="education" role="tab" data-toggle="tab">Education</a></li>
+    <li role="presentation"><a href="#environment" aria-controls="environment" role="tab" data-toggle="tab">Environment</a></li>
+    <li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab">Finance</a></li>
+    <li role="presentation"><a href="#gender" aria-controls="gender" role="tab" data-toggle="tab">Gender</a></li>
+    <li role="presentation"><a href="#poverty" aria-controls="poverty" role="tab" data-toggle="tab">Poverty</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  
+  <div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="economy">
+  <ul>
+	   <li>graphs</li>
+	   <li>graphs</li>
+	   <li>graphs</li>
+	</ul>
+  </div>
+  
+  <div role="tabpanel" class="tab-pane fade" id="health">...</div>
+  <div role="tabpanel" class="tab-pane fade" id="education">...</div>
+  <div role="tabpanel" class="tab-pane fade" id="environment">...</div>
+  <div role="tabpanel" class="tab-pane fade" id="finance">...</div>
+  <div role="tabpanel" class="tab-pane fade" id="gender">...</div>
+  <div role="tabpanel" class="tab-pane fade" id="poverty">...</div>
+</div>
+
+</div>
+{% endblock %}
